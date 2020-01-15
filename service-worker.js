@@ -13,7 +13,7 @@ self.addEventListener("install", async event => {
 
 self.addEventListener("activate", async event => {
     const keys = await caches.keys();
-    keys.map(key =>key!=CACHE.name? caches.delete(key):'');
+    keys.map(key =>key!=cacheName? caches.delete(key):'');
   console.log("Service worker activate event!");
 });
 
