@@ -1,8 +1,9 @@
-const cacheName = "pwatutorial-cache";
+const cacheName = "pwatutorial";
 const precache = ["/", "index.html", "style.css"];
 
 self.addEventListener("install", async event => {
   console.log("Service worker install event!");
+  self.skipWaiting();
   try {
     let cache = await caches.open(cacheName);
     cache.addAll(precache);
@@ -13,7 +14,7 @@ self.addEventListener("install", async event => {
 
 self.addEventListener("activate", async event => {
     const keys = await caches.keys();
-    keys.map(key =>key!=CACHE.name? caches.delete(key):'');
+    keys.map(key =>key!=cacheName? caches.delete(key):'');
   console.log("Service worker activate event!");
 });
 
